@@ -39,32 +39,32 @@ var socket = net.connect({port:8000, host:'localhost'}, function(){
  });
  socket.on('error', function(err){
      console.log(err);
- };
+ });
  ```
  
  * 서버.js
  ```javascript
 var net = require('net');
- 
+
 var server = net. createServer(function(socket){
-    console.log(socket.address().address + "connected.");
-     
-    socket.on('data',function(data){
-        console.log(data);
-    });
-    socket.on('close',function(){
-        console.log('client disconnected');
-    });
-    //클라이언트 접속 시 Welcome 화면에 출력
-    socket.wirte('Welcome');
+   console.log(socket.address().address + "connected.");
+    
+   socket.on('data',function(data){
+       console.log(data);
+   });
+   socket.on('close',function(){
+       console.log('client disconnected');
+   });
+   //클라이언트 접속 시 Welcome 화면에 출력
+   socket.wirte('Welcome');
 });
 //에러 메시지
 server.on('error', function(err){
-    console.log('Err'+ err);
+   console.log('Err'+ err);
 });
 
 //8000포트로 접속 대기
-server.listen(5000, function()
-    console.log('listening on 8000..');
+server.listen(5000, function(){
+   console.log('listening on 8000..');
 });
    
